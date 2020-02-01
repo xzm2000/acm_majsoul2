@@ -433,9 +433,7 @@ Board.prototype.showInitBoard = function() {
 		var rankHTML;
 		if (team.teamId <= 24)
 			rankHTML = "<th class=\"rank\" width=\"" + rankPer + "%\">" + rank + "</th>";
-		else if (team.teamId <= 24)
-			rankHTML = "<th class=\"rank\" width=\"" + rankPer + "%\">" + team.teamId + "</th>";
-		else rankHTML = "<th class=\"rank\" width=\"" + rankPer + "%\">" + "*" + "</th>";
+		else rankHTML = "<th class=\"rank\" width=\"" + rankPer + "%\">" + team.teamId + "</th>";
         var teamHTML; 
 		if (team.gender == 1)
 			teamHTML = "<td class=\"team-name\" width=\"" + teamPer + "%\"><span><font color=\"#FF9999\">" + team.teamName +  "</font></span></td>";
