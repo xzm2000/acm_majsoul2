@@ -422,8 +422,20 @@ Board.prototype.showInitBoard = function() {
         //计算每支队伍的排名和奖牌情况
         var rank = maxRank-1;
         var medal = -1;
-		rank = maxRank;
-		maxRank = rank + 1;
+        if (team.solved != 0) {
+			if (team.official==true)
+			{
+            	rank = maxRank;
+            	maxRank = rank + 1;
+			}
+            for (var j = this.medalRanks.length - 1; j >= 0; j--) {
+                if (rank <= this.medalRanks[j])
+                    medal = j;
+            }
+        } else {
+            rank = maxRank;
+            medal = -1;
+        }
 
 
         //构造HTML
@@ -480,11 +492,8 @@ Board.prototype.showInitBoard = function() {
         //填充HTML
         $('body').append(HTML);
         //设置奖牌对应的CSS样式
-		/*
-        if (team.gender == 1)
-            $("#team_" + team.teamId).addClass("girl");
-		*/
-
+        if (medal != -1)
+            $("#team_" + team.teamId).addClass(this.medalStr[medal]);
     }
 
 
